@@ -11,6 +11,8 @@
   font-size: 2.5rem;
 }
 
+
+
 .carrito-vacio {
   text-align: center;
   padding: 3rem;
@@ -19,7 +21,7 @@
 
 .btn-vaciar {
   display: inline-block;
-  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  background: #4b041f;
   color: white;
   padding: 0.8rem 2rem;
   border-radius: 25px;
@@ -86,7 +88,7 @@
 }
 
 .btn-cantidad {
-  background: #4ecdc4;
+  background: #45061c;
   color: white;
   border: none;
   width: 30px;
@@ -155,7 +157,7 @@
   font-size: 1.2rem;
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 2px solid #4ecdc4;
+  border-top: 2px solid #690a1f;
 }
 
 .acciones-carrito {
@@ -179,7 +181,7 @@
 
 .btn-comprar {
   flex: 1;
-  background: linear-gradient(135deg, #4ecdc4, #44a08d);
+  background: #47051a;
   color: white;
   border: none;
   padding: 0.8rem;

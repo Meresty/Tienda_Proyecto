@@ -71,8 +71,8 @@ import { CarritoIndicadorComponent } from './carrito/carrito-indicador.component
 
     .nav-link.active,
     .nav-link:hover {
-      color: #4ecdc4;
-      background: rgba(78, 205, 196, 0.1);
+      color: #8f0c68ff;
+      background: rgba(205, 78, 186, 0.1);
     }
 
     .main-content {
