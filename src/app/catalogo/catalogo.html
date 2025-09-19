@@ -1,8 +1,42 @@
-<h2>Catalogo</h2>
-<div *ngFor="let producto of productos">
-  <h3>{{ producto.nombre }}</h3>
-  <p>{{ producto.descripcion }}</p>
-  <p>Precio: ${{ producto.precio }}</p>
-  <img [src]="producto.imagen" alt="{{ producto.nombre }}" width="200" />
+<!-- src/app/catalogo/catalogo.html -->
+<h2 class="titulo-catalogo">⋆.˚ ☾⭒.˚ Nuestro catálogo ⋆.˚ ☾⭒.˚</h2>
 
+<!-- Indicador del carrito -->
+<div class="indicador-carrito">
+  <span class="contador-carrito">
+    🛒 {{ carritoService.obtenerTotalItems() }} items
+  </span>
+</div>
+
+<div class="contenedor-catalogo">
+  <div *ngFor="let producto of productos" class="card-producto">
+    <div class="card-imagen">
+      <img [src]="producto.imagen" [alt]="producto.nombre" loading="lazy">
+    </div>
+    <div class="card-contenido">
+      <h3 class="nombre-producto">{{ producto.nombre }}</h3>
+      <p class="descripcion-producto">{{ producto.descripcion }}</p>
+      
+      <div class="info-precio">
+        <span class="precio">${{ producto.precio }}</span>
+
+        <div *ngIf="getCantidadEnCarrito(producto.id) > 0" class="contador-carrito-producto">
+          <button 
+            (click)="carritoService.actualizarCantidad(producto.id, getCantidadEnCarrito(producto.id) - 1)"
+            class="btn-cantidad">-</button>
+          <span class="cantidad">{{ getCantidadEnCarrito(producto.id) }}</span>
+          <button 
+            (click)="carritoService.actualizarCantidad(producto.id, getCantidadEnCarrito(producto.id) + 1)"
+            class="btn-cantidad">+</button>
+        </div>
+        
+        <button 
+          *ngIf="getCantidadEnCarrito(producto.id) === 0" 
+          (click)="agregarAlCarrito(producto)"
+          class="btn-comprar">
+          Agregar al carrito
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

@@ -13,9 +13,9 @@ describe('CatalogoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CatalogoComponent], // <-- va aquí, no en imports
+      declarations: [CatalogoComponent], 
       providers: [
-        { provide: ProductoService, useValue: productoServiceMock } // <-- inyectar mock
+        { provide: ProductoService, useValue: productoServiceMock } 
       ]
     })
     .compileComponents();
