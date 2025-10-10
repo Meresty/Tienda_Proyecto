@@ -1,5 +1,5 @@
 <div class="contenedor-carrito">
-  <h2 class="titulo-carrito"> Tu Carrito de compras </h2>
+  <h2 class="titulo-carrito">Tu Carrito de compras</h2>
   
   <div *ngIf="cartItems.length === 0" class="carrito-vacio">
     <p>Tu carrito está vacío, compraaaaaa</p>
@@ -7,7 +7,6 @@
   </div>
 
   <div *ngIf="cartItems.length > 0" class="carrito-contenido">
-
     <div class="lista-items">
       <div *ngFor="let item of cartItems" class="item-carrito">
         <img [src]="item.product.imagen" [alt]="item.product.nombre" class="img-item">
@@ -20,11 +19,11 @@
         
         <div class="controles-cantidad">
           <button 
-            (click)="actualizarCantidad(item, item.quantity - 1)"
+            (click)="actualizar(item, item.quantity - 1)"
             class="btn-cantidad">-</button>
           <span class="cantidad">{{ item.quantity }}</span>
           <button 
-            (click)="actualizarCantidad(item, item.quantity + 1)"
+            (click)="actualizar(item, item.quantity + 1)"
             class="btn-cantidad">+</button>
         </div>
         
@@ -33,19 +32,17 @@
         </div>
         
         <button 
-          (click)="removerItem(item)"
+          (click)="quitar(item)"
           class="btn-remover">
           🗑️
         </button>
       </div>
     </div>
 
-
-      
-      <div class="acciones-carrito">
-        <button (click)="limpiarCarrito()" class="btn-limpiar">Limpiar carrito</button>
-        <button class="btn-comprar">Proceder al pago</button>
-      </div>
+    <div class="acciones-carrito">
+      <button (click)="vaciar()" class="btn-limpiar">Limpiar carrito</button>
+      <button (click)="exportarXML()" class="btn-exportar">Exportar Factura XML</button>
+      <button class="btn-comprar">Proceder al pago</button>
     </div>
   </div>
- 
+</div>

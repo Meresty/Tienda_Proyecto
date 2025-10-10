@@ -80,5 +80,43 @@ export class CarritoService {
     localStorage.setItem('carrito', JSON.stringify(this.cartItems));
   }
 
+
+  exportarXML(): void {
+
+  const escapeXML = (str: string) =>
+    str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&apos;');
+
+  let xml = `<?xml version="1.0" encoding="UTF-8"?>\n`;
+  xml += `<recibo id="${Date.now()}">\n`;
+  xml += `  <fecha>${new Date().toISOString()}</fecha>\n`;
+
+  for (const item of this.cartItems) {
+    xml += `  <producto>\n`;
+    xml += `    <id>${item.product.id}</id>\n`;
+    xml += `    <nombre>${escapeXML(item.product.nombre)}</nombre>\n`;
+    xml += `    <precio>${item.product.precio}</precio>\n`;
+    xml += `    <cantidad>${item.quantity}</cantidad>\n`;
+    if (item.product.descripcion) {
+      xml += `    <descripcion>${escapeXML(item.product.descripcion)}</descripcion>\n`;
+    }
+    xml += `  </producto>\n`;
+  }
+
+  xml += `  <total>${this.obtenerTotalPrecio()}</total>\n`;
+  xml += `</recibo>`;
+
+  const blob = new Blob([xml], { type: 'application/xml' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `recibo_${new Date().toISOString().split('T')[0]}.xml`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
   
 }

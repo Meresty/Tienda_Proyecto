@@ -1,4 +1,3 @@
-// src/app/catalogo/catalogo.ts
 import { Component, OnInit } from "@angular/core";
 import { Product } from "../models/product";
 import { ProductoService } from "../services/producto.service";
@@ -18,7 +17,7 @@ export class CatalogoComponent implements OnInit {
     
     constructor(
         private productoService: ProductoService,
-        public carritoService: CarritoService // ✅ PUBLIC para acceder desde template
+        public carritoService: CarritoService 
     ) {}
 
     async ngOnInit() {

@@ -22,19 +22,27 @@ export class CarritoComponent implements OnInit {
     });
   }
 
-  actualizarCantidad(item: CartItem, nuevaCantidad: number): void {
+  actualizar(item: CartItem, nuevaCantidad: number): void {
     this.carritoService.actualizarCantidad(item.product.id, nuevaCantidad);
   }
 
-  removerItem(item: CartItem): void {
+  quitar(item: CartItem): void {
     this.carritoService.removerDelCarrito(item.product.id);
   }
 
-  limpiarCarrito(): void {
+  vaciar(): void {
     this.carritoService.limpiarCarrito();
   }
 
   getTotalItems(): number {
     return this.cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  }
+
+  exportarXML() {
+    if (this.cartItems.length === 0) {
+      alert('El carrito está vacío. Añade productos antes de generar la factura.');
+      return;
+    }
+    this.carritoService.exportarXML();
   }
 }

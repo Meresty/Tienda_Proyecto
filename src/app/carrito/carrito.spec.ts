@@ -27,7 +27,7 @@ export class CarritoComponent implements OnInit {
     this.carritoService.actualizarCantidad(item.product.id, nuevaCantidad);
   }
 
-  removerItem(item: CartItem): void {
+  quitar(item: CartItem): void {
     this.carritoService.removerDelCarrito(item.product.id);
   }
 
